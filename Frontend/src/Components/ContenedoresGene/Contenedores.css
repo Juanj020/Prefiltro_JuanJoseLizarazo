@@ -1,0 +1,63 @@
+.Contenedor{
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedor-der{
+    width: 100%;
+    background-color: rgba(53, 173, 130, 0.33);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagen-casita{
+    width: 150px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 26px;
+}
+
+.titulo{
+    text-align: center;
+    margin: 50px 50px 25px 50px;
+}
+.titulo h1{
+    font-size: 60px;
+    color: rgba(0, 121, 78, 1);
+}
+
+.contenedor-izq {
+    position: relative;
+    width: 15%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.imagen-izq{
+    background-color: rgba(53, 173, 130, 0.33);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.contenedor-der{
+    width: 100%;
+    background-color: rgba(53, 173, 130, 0.33);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

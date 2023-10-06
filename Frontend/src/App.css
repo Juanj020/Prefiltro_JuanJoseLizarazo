@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.mani{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
+    height: 4rem;
+    background-image: linear-gradient(to top, rgba(89, 145, 119, 0.596), #ffffff);
+}
+
+.mani img{
+    width: 50px;
+}
+.img-admin{
+    padding-top: 5px;
+}
+

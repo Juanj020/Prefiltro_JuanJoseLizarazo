@@ -6,7 +6,8 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import Cajas from './../Cajas/Caja'
 import Cargos from './../Cargos/Cargos'
 import Cliente from '../Clientes/Clientes'
-import Restaurante from '../Restaurante/Restaurante'
+import Resta from '../Restaurantes/Resta'
+import Personal from '../Personal/Personal'
 
 export default function Contenedor(){
     return(
@@ -21,7 +22,7 @@ export default function Contenedor(){
                 <Link to="/create/cargo">Cargos</Link>
                 <Link to="/create/cliente">Clientes</Link>
                 <a href="dsad">Facturas</a>
-                <a href="dsad">Personal</a>
+                <Link to="/create/personal">Personal</Link>
                 <Link to="/create/restaurante">Restaurantes</Link>
                 <a href="dsad">Administradores</a>
             </div>
@@ -43,7 +44,12 @@ export default function Contenedor(){
                 </Route>
                 <Route path="/create/restaurante">
                     <div className='contenedor-der'>
-                        <Restaurante></Restaurante>
+                        <Resta></Resta>
+                    </div>
+                </Route>
+                <Route path="/create/personal">
+                    <div className='contenedor-der'>
+                        <Personal></Personal>
                     </div>
                 </Route>
             </Switch>

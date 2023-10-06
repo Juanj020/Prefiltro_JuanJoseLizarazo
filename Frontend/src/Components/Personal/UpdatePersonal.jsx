@@ -26,28 +26,34 @@ Modal.setAppElement('#root');
 export default function UpdateModal({ isOpen, closeModal, dataToUpdate, updateData }) {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
-  const [direccion, setDireccion] = useState('');
-  const [telefono, setTelefono] = useState('');
+  const [sueldo, setSueldo] = useState('');
+  const [turno, setTurno] = useState('');
+  const [Cargo, setCargo] = useState('');
+  const [fecha, setFecha] = useState('');
 
   useEffect(() => {
     if (isOpen && dataToUpdate) {
       setNombre(dataToUpdate.nombre);
       setApellido(dataToUpdate.apellido);
-      setDireccion(dataToUpdate.direccion);
-      setTelefono(dataToUpdate.telefono);
+      setSueldo(dataToUpdate.sueldo);
+      setTurno(dataToUpdate.turno);
+      setCargo(dataToUpdate.Cargo);
+      setFecha(dataToUpdate.fecha);
     }
   }, [isOpen, dataToUpdate]);
 
   const updateDataHandler = () => {
     axios
-      .put(`http://localhost:4002/api/restaurante/${dataToUpdate._id}`, {
+      .put(`http://localhost:4002/api/personal/${dataToUpdate._id}`, {
         nombre,
         apellido,
-        direccion,
-        telefono
+        sueldo,
+        turno,
+        Cargo,
+        fecha,
       })
       .then(() => {
-        updateData(dataToUpdate._id, nombre, apellido, direccion, telefono);
+        updateData(dataToUpdate._id, nombre, apellido, sueldo, turno, Cargo, fecha,);
         closeModal();
       })
       .catch((error) => {
@@ -58,41 +64,46 @@ export default function UpdateModal({ isOpen, closeModal, dataToUpdate, updateDa
   return (
     <div className='mondal'>
     <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Actualizar Registro">
-      <h2>Actualizar Registro</h2>
+      <h2>Actualizar Registro del Personal</h2>
       <Form className="update-form">
       <div className='conenido-modal'>
         <Form.Field className='input'>
-          <label>Nombre cliente</label>
+          <label>Nombre personal</label>
           <input
-            placeholder="Ej: 4"
+            placeholder="Nombre del personal"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
           />
         </Form.Field>
         <Form.Field className='input'>
-          <label>Apellido cliente</label>
+          <label>Apellido</label>
           <input
-            placeholder="Descripción"
+            placeholder="Escriba la Apellido"
             value={apellido}
             onChange={(e) => setApellido(e.target.value)}
           />
         </Form.Field>
         <Form.Field className='input'>
-          <label>Direccion</label>
+          <label>Sueldo personal</label>
           <input
-            placeholder="Descripción"
-            value={direccion}
-            onChange={(e) => setDireccion(e.target.value)}
+            placeholder="Sueldo personal"
+            value={sueldo}
+            onChange={(e) => setSueldo(e.target.value)}
           />
         </Form.Field>
         <Form.Field className='input'>
-          <label>Telefono</label>
-          <input
-            placeholder="Descripción"
-            value={apellido}
-            onChange={(e) => setDireccion(e.target.value)}
+          <label>Turno personal</label>
+          <input placeholder="Turno personal" value={turno} onChange={(e) => setTurno(e.target.value)}/>
+        </Form.Field>
+        <Form.Field className='input'>
+          <label>Cargo</label>
+          <input placeholder="Escriba el numero" value={Cargo} onChange={(e) => setCargo(e.target.value)}
           />
         </Form.Field>
+        <Form.Field className='input'>
+            <label>Fecha</label>
+            <input type='Date' placeholder="fecha" value={fecha} onChange={(e) => setFecha(e.target.value)} />
+          </Form.Field>
         </div>
         <div className='botones'>
         <Button type="button" onClick={updateDataHandler}>

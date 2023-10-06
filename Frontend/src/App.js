@@ -29,7 +29,15 @@ function App() {
       <div>
         <Route path="/create/cliente" component={Contenedor}></Route>
       </div>
-
+      <div>
+        <Route path="/create/cliente" component={Contenedor}></Route>
+      </div>
+      <div>
+        <Route path="/create/restaurante" component={Contenedor}></Route>
+      </div>
+      <div>
+        <Route path="/create/personal" component={Contenedor}></Route>
+      </div>
     </Router >
   );
 }

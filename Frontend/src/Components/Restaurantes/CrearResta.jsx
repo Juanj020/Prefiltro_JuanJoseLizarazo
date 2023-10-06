@@ -41,7 +41,7 @@ export default function Modall() {
   const [categoria, setCategoria] = useState('');
   const [telefono, setTelefono] = useState('');
 
-
+  
 
   const postData = () => {
     axios.post(`http://localhost:4002/api/restaurante`, {
@@ -57,22 +57,22 @@ export default function Modall() {
 
   return (
     <div className='mondal'>
-      <button onClick={openModal}>Crear Restaurante - Sucursal</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Ejemplo de Modal">
-      <h2 className='titulo-modal'>Ingrese el nuevo restaurante</h2>
+      <button onClick={openModal}>Crear Restaurante</button>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="">
+      <h2 className='titulo-modal'>Ingrese el nuevo Restaurante</h2>
         <Form className="create-form">
           <div className='conenido-modal'>
           <Form.Field className='input'>
             <label>Nombre de restaurante</label>
-            <input placeholder="Nombre restaurante" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+            <input placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
           </Form.Field>
           <Form.Field className='input'>
             <label>Direccion</label>
-            <input placeholder="Direccion restaurante" value={direccion} onChange={(e) => setDireccion(e.target.value)} />
+            <input placeholder="Direccion" value={direccion} onChange={(e) => setDireccion(e.target.value)} />
           </Form.Field>
           <Form.Field className='input'>
             <label>Categoria</label>
-            <input placeholder="Categoria restaurante" value={categoria} onChange={(e) => setCategoria(e.target.value)} />
+            <input placeholder="Categoria" value={categoria} onChange={(e) => setCategoria(e.target.value)} />
           </Form.Field>
           <Form.Field className='input'>
             <label>Telefono</label>

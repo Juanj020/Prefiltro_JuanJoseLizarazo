@@ -1,17 +1,17 @@
 import React from "react";
-import Modall from "./CrearRestaurante";
-import ReadCliente from '../Clientes/ReadCliente'
+import Modall from "./CrearPersonal";
+import ReadPersonal from './ReadPersonal'
 
-export default function Restaurante(){
+export default function Personal(){
     return(
         <div>
             <div className='contenedor-der-main'>
                 <div className='titulo'>
-                    <h1>Restaurantes</h1>
+                    <h1>Personal</h1>
                 </div>
             </div>
             <Modall></Modall>
-            <ReadCliente></ReadCliente>
+            <ReadPersonal></ReadPersonal>
         </div>
     )
 }

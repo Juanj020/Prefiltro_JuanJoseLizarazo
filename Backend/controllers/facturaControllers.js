@@ -13,7 +13,61 @@ const coleccion = db.collection("Facturas");
 
 const getFactura = async (req, res) => {
     try {
-        const resultado = await coleccion.find().toArray();
+        const resultado = await coleccion.aggregate([
+            {
+              $lookup: {
+                from: 'Clientes',
+                localField: 'idCliente',
+                foreignField: '_id',
+                as: 'cliente',
+              },
+            },
+            {
+              $lookup: {
+                from: 'Cajas',
+                localField: 'idCaja',
+                foreignField: '_id',
+                as: 'caja',
+              },
+            },
+            {
+              $lookup: {
+                from: 'Personal',
+                localField: 'idPersonal',
+                foreignField: '_id',
+                as: 'personal',
+              },
+            },
+            {
+              $lookup: {
+                from: 'Restaurantes',
+                localField: 'idRestaurante',
+                foreignField: '_id',
+                as: 'restaurante',
+              },
+            },
+            {
+              $unwind: '$cliente',
+            },
+          {
+              $unwind: '$caja',
+            },
+          {
+              $unwind: '$restaurante',
+            },
+            {
+              $project: {
+                _id: 1,
+                idCliente: '$cliente.nombre',
+          idCaja: '$caja.numeroCaja',
+          idRestaurante: '$restaurante.nombre',
+                precioTotal: 1,
+                fechaCompra: 1,
+                formaDePago: 1, 
+          idPersonal : 1
+              },
+            },
+          ]).toArray();
         res.status(200).json(resultado);
     } catch (error) {
         res.status(400).json({mensaje:"Pailas pai"})

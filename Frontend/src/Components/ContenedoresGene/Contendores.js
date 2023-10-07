@@ -8,6 +8,8 @@ import Cargos from './../Cargos/Cargos'
 import Cliente from '../Clientes/Clientes'
 import Resta from '../Restaurantes/Resta'
 import Personal from '../Personal/Personal'
+import Admi from '../Administradores/Admi'
+import Facturas from '../Facturas/Facturas'
 
 export default function Contenedor(){
     return(
@@ -21,10 +23,10 @@ export default function Contenedor(){
                 <Link to="/create/caja">Cajas</Link>
                 <Link to="/create/cargo">Cargos</Link>
                 <Link to="/create/cliente">Clientes</Link>
-                <a href="dsad">Facturas</a>
+                <Link to="/create/factura">Facturas</Link> 
                 <Link to="/create/personal">Personal</Link>
                 <Link to="/create/restaurante">Restaurantes</Link>
-                <a href="dsad">Administradores</a>
+                <Link to="/create/administrador">Administradores</Link>
             </div>
             <Switch>
                 <Route exact path="/create/caja">
@@ -50,6 +52,16 @@ export default function Contenedor(){
                 <Route path="/create/personal">
                     <div className='contenedor-der'>
                         <Personal></Personal>
+                    </div>
+                </Route>
+                <Route path="/create/administrador">
+                    <div className='contenedor-der'>
+                        <Admi></Admi>
+                    </div>
+                </Route>
+                <Route path="/create/factura">
+                    <div className='contenedor-der'>
+                        <Facturas></Facturas>
                     </div>
                 </Route>
             </Switch>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from "axios";
 import { Button, Form } from "semantic-ui-react";
@@ -26,6 +26,7 @@ Modal.setAppElement('#root');
 
 export default function Modall() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [APIData, setAPIData] = useState([]);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -61,6 +62,15 @@ export default function Modall() {
       window.location.reload();
     })
   }
+  const getData = () => {
+    axios.get(`http://localhost:4002/api/cargo`).then((response) => {
+    setAPIData(response.data);
+    });
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className='mondal'>
@@ -87,7 +97,14 @@ export default function Modall() {
           </Form.Field>
           <Form.Field className='input'>
             <label>Cargo</label>
-            <input placeholder="cargo" value={Cargo} onChange={(e) => setCargo(e.target.value)} />
+            <select value={Cargo} onChange={(e) => setCargo(e.target.value)}>
+              <option value="">Selecciona un cargo</option>
+              {APIData.map((data) => (
+                <option key={data._id} value={data._id}>
+                  {data.nombre}
+                </option>
+              ))}
+          </select>
           </Form.Field>
           <Form.Field className='input'>
             <label>Fecha</label>

@@ -12,7 +12,39 @@ const coleccion = db.collection("Administrador");
 
 const getAdministrador = async (req, res)=>{
     try {
-        const resultado = await coleccion.find().toArray();
+        const resultado = await coleccion.aggregate([
+            {
+              $lookup: {
+                from: 'Personal',
+                localField: 'idPersonal',
+                foreignField: '_id',
+                as: 'persona',
+              },
+            },
+            {
+              $lookup: {
+                from: 'Restaurantes',
+                localField: 'idRestaurante',
+                foreignField: '_id',
+                as: 'restaurante',
+              },
+            },
+            {
+              $unwind: '$persona',
+            },
+            {
+              $unwind: '$restaurante',
+            },
+            {
+              $project: {
+                _id: 1,
+                idPersonal: '$persona.nombre',
+                idRestaurante: '$restaurante.nombre',
+                correo: 1,
+                telefono: 1,
+              },
+            },
+          ]).toArray();
         res.json(resultado)
     } catch (error) {
         console.log(error);

@@ -53,7 +53,7 @@ export default function Modall() {
     <div className='mondal'>
       <button onClick={openModal}>Crear Caja Registradora</button>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Ejemplo de Modal">
-      <h2 className='titulo-modal'>Ingrese el nuevo administrador del restaurante</h2>
+      <h2 className='titulo-modal'>Ingrese la caja registradora</h2>
         <Form className="create-form">
           <div className='conenido-modal'>
           <Form.Field className='input'>

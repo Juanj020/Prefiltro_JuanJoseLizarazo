@@ -53,7 +53,7 @@ export default function Modall() {
     <div className='mondal'>
       <Button onClick={openModal}>Crear Cargo del Personal</Button>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="">
-      <h2 className='titulo-modal'>Ingrese el nuevo Cargo del persoanl</h2>
+      <h2 className='titulo-modal'>Ingrese el nuevo Cargo del personal</h2>
         <Form className="create-form">
           <div className='conenido-modal'>
           <Form.Field className='input'>

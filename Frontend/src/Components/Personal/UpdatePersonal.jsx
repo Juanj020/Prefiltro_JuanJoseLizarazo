@@ -30,6 +30,7 @@ export default function UpdateModal({ isOpen, closeModal, dataToUpdate, updateDa
   const [turno, setTurno] = useState('');
   const [Cargo, setCargo] = useState('');
   const [fecha, setFecha] = useState('');
+  const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
     if (isOpen && dataToUpdate) {
@@ -60,6 +61,16 @@ export default function UpdateModal({ isOpen, closeModal, dataToUpdate, updateDa
         console.error(error);
       });
   };
+
+  const getData = () => {
+    axios.get(`http://localhost:4002/api/cargo`).then((response) => {
+    setAPIData(response.data);
+    });
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className='mondal'>
@@ -97,8 +108,14 @@ export default function UpdateModal({ isOpen, closeModal, dataToUpdate, updateDa
         </Form.Field>
         <Form.Field className='input'>
           <label>Cargo</label>
-          <input placeholder="Escriba el numero" value={Cargo} onChange={(e) => setCargo(e.target.value)}
-          />
+          <select value={Cargo} onChange={(e) => setCargo(e.target.value)}>
+              <option value="">Selecciona un cargo</option>
+              {APIData.map((data) => (
+                <option key={data._id} value={data._id}>
+                  {data.nombre}
+                </option>
+              ))}
+          </select>
         </Form.Field>
         <Form.Field className='input'>
             <label>Fecha</label>

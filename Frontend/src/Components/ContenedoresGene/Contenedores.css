@@ -1,6 +1,7 @@
 .Contenedor{
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 
 .contenedor-der{
@@ -33,7 +34,6 @@ a{
 .contenedor-izq {
     position: relative;
     width: 15%;
-    height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;

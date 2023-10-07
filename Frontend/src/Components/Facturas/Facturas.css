@@ -1,0 +1,27 @@
+.contenido-medio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    margin-top: 50px;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    display: inline;
+    gap: 3rem;
+}
+
+th, td {
+    padding: 8px;
+}
+
+th {
+    background-color: #505050;
+}
+
+td {
+    background-color: #f2f2f2;
+}
+

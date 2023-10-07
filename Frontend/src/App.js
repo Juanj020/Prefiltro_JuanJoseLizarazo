@@ -38,8 +38,38 @@ function App() {
       <div>
         <Route path="/create/personal" component={Contenedor}></Route>
       </div>
+      <div>
+        <Route path="/create/administrador" component={Contenedor}></Route>
+      </div>
+      <div>
+        <Route path="/create/factura" component={Contenedor}></Route>
+      </div>
     </Router >
   );
 }
 
 export default App;
+
+
+/* 
+db.Personal.aggregate([
+            {
+                $lookup: {
+                    from: 'Cargos',
+                    localField: "idCargo",
+                    foreignField: "_id",
+                    as: "cargo"
+                },
+            {
+                $project: {
+                    nombre: 1,
+                    apellido: 1,
+                    sueldo: '1,
+                    turno: 1,
+                    cargo.nombre: 1
+                    fechaNacimiento: 1
+                }
+            }
+            }])
+            
+            */

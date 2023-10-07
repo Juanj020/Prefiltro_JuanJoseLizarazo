@@ -13,7 +13,30 @@ const coleccion = db.collection("Personal");
 
 const getPersonal = async (req, res) => {
     try {
-        const resultado = await coleccion.find().toArray();
+        const resultado = await coleccion.aggregate([
+            {
+                $lookup: {
+                    from: 'Cargos',
+                    localField: 'idCargo',
+                    foreignField: '_id',
+                    as: 'cargo'
+                }
+            },
+            {
+                $unwind: '$cargo'
+            },
+            {
+                $project: {
+                    _id: 1,
+                    nombre: 1,
+                    apellido: 1,
+                    sueldo: 1,
+                    turno: 1,
+                    fechaNacimiento: 1,
+                    idCargo: '$cargo.nombre'
+                }
+            }
+        ]).toArray();
         res.json(resultado);
     } catch (error) {
         console.log(error);
@@ -33,6 +56,7 @@ const postPersonal = async (req, res) => {
         res.status(400).json({mensaje: "a llorarlo"})
     }
 }
+
 
 const updatePersonal = async (req, res) => {
     try {
